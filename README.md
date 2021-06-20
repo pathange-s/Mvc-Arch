@@ -4,7 +4,7 @@ Library Management System on MVC architecture
 
 ## Start
 * Clone the repository
-* Get your LAMP setup . [a link](https://forum.manjaro.org/t/howto-install-apache-mariadb-mysql-php-lamp/13000)
+* Get your LAMP setup . [ LAMP ](https://forum.manjaro.org/t/howto-install-apache-mariadb-mysql-php-lamp/13000)
 
 ## Setting up database
 * Start mysql server
