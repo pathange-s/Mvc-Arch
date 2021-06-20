@@ -1,4 +1,5 @@
 {
+    
     "name": "vrongmeal/mvc-lecture",
     "description": "Basic application with MVC architecture",
     "require": {
