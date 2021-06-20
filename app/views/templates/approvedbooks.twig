@@ -1,0 +1,98 @@
+<head>
+    <link href="/assets/styles/table.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title> History </title>
+    
+    <style>
+        #back{
+            margin-left:20%;
+        }
+        #checkout{
+            
+            margin-left:40%;
+        
+        }
+    </style>
+
+
+</head>
+
+
+<p class="sign" align="center">History</p>
+
+<table id="books" >  
+    <thead>  
+        <tr align="center">
+            <th>Request ID</th>  
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>CheckIn</th>
+        </tr>  
+    </thead>  
+
+     <tbody>
+  
+       {% for bookdata in history %}
+        <tr align="center">
+            <td>{{ bookdata.Request_ID }}</td>
+            <td>{{ bookdata.Book_ID }}</td>  
+            <td>{{ bookdata.book_name }}</td>  
+            <td><input type="checkbox" id="{{bookdata.Request_ID}}" name="tickOrNot"></td>            
+        </tr>   
+        {% endfor %}                    
+     
+     </tbody>
+     
+</table>   
+
+ {% if checkinsuccess %}
+    <p id="successMessage" class="login" align="center">Registration Successful !</p>
+{% endif %}  
+
+<button onclick="returnback()" id ="back" class="submitbutton" >Back</button>
+
+   
+<button onclick="checkin()" id="checkout" class="submitbutton" >CheckIn</button>
+        
+
+<script>
+    function returnback(){
+
+        window.location = "/user"
+    }
+
+     function checkin(){
+
+        var request_id_checked_checkin = [];
+        
+        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
+        
+        //console.log(checkbox.length+"--------------");
+        for (var i = 0; i < checkbox.length; i++) {
+
+            request_id_checked_checkin.push(checkbox[i].id);
+        }
+
+        console.log(request_id_checked_checkin);
+
+
+            
+    $.ajax({  
+      
+        url:"/approvedbooks",           
+        type:"POST",  
+        data:{checkin : request_id_checked_checkin},
+        success: function(msg){
+            console.log("success");
+            window.location="/approvedbooks";
+            }
+    });
+
+
+    }
+
+
+</script>
+
+

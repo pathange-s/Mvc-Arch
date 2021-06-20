@@ -1,0 +1,128 @@
+<head>
+     <link href="/assets/styles/admin.css" rel="stylesheet">
+     <link href="/assets/styles/table.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        #back{
+            margin:30px;
+        }
+        #approve{
+            margin:30px;
+            margin-left:1%;
+        }
+         #deny{
+            margin:30px;
+            margin-left:25%;
+        }
+    </style>
+</head>
+
+
+<table id="books" >  
+    <thead>  
+        <tr align="center">
+            <th>Request ID</th>    
+            <th>Book ID</th> 
+            <th>Book Name</th> 
+            <th>Book Count</th> 
+            <th>User_Email</th>  
+            <th>Status</th>  
+            <th>~</th>
+        </tr>  
+    </thead>  
+
+     <tbody>  
+       {% for book in requestdata %}
+        <tr align="center">
+            <td>{{book.Request_ID }}</td>   
+            <td>{{book.Book_ID }}</td>  
+            <td>{{book.book_name }}</td>  
+            <td>{{book.book_count  }}</td>  
+            <td>{{book.User_Email }}</td>  
+            <td>{{book.Status }}</td>
+            <td><input type="checkbox" id="{{book.Request_ID}}" name="tickOrNot"></td>
+            
+            
+        </tr>                       
+     
+        {% endfor %}                    
+     
+     </tbody>
+     
+</table>   
+
+
+
+<button class="submitbutton" id="back"  onclick="returnback()">Back</button>
+<button  class="submitbutton" id="deny" onclick="Deny()">Deny</button>
+<button class="submitbutton" id = "approve" onclick="Approve()">Approve</button>  
+
+
+<script>
+
+    function returnback(){
+
+        window.location = "/admin"
+    }
+
+    function Approve(){
+        
+        var request_id_checked = [];
+        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
+        
+        var condition = "approve";
+        for (var i = 0; i < checkbox.length; i++) {
+
+            request_id_checked.push(checkbox[i].id);
+        }
+
+        console.log(request_id_checked);
+        
+        $.ajax({
+            type: "POST",
+            url: "/managebooks",
+            data : {request : request_id_checked, status : condition },
+            success: function(msg){
+            window.location="/managebooks";
+        }
+    }); 
+
+    
+
+    
+
+    }
+
+
+
+    function Deny(){
+
+        var request_id_checked = [];
+        var condition = "deny";
+        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
+
+        for (var i = 0; i < checkbox.length; i++) {
+
+            request_id_checked.push(checkbox[i].id);
+        }
+
+        
+
+        $.ajax({
+            type: "POST",
+            url: "/managebooks",
+            data : {request : request_id_checked,status : condition },
+            success: function(msg){
+                window.location="/managebooks";
+        }
+        }); 
+
+
+       
+
+
+        }
+
+</script>

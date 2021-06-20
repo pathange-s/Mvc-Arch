@@ -1,0 +1,92 @@
+<head>
+
+     <link href="/assets/styles/table.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        #back{
+            margin-left:20%;
+        }
+        #checkout{
+            
+            margin-left:40%;
+        
+        }
+    </style>
+
+</head>
+
+
+<p class="sign" align="center">Books Available In Library</p>
+<table id="books" >  
+    <thead>  
+        <tr align="center">
+            
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>CheckIn</th>
+        </tr>  
+    </thead>  
+
+     <tbody>
+  
+       {% for bookdata in booksavailable %}
+        <tr align="center">
+            
+            <td>{{ bookdata.book_id }}</td>  
+            <td>{{ bookdata.book_name }}</td>  
+            <td><input type="checkbox" id="{{bookdata.book_id}}" name="tickOrNot"></td>            
+        </tr>   
+        {% endfor %}                    
+     
+     </tbody>
+     
+</table>   
+
+<br>
+<button onclick="returnback()" id="back" class="submitbutton">Back</button>
+<button onclick="collectChecks()" id="checkout" class="submitbutton">Checkout</button>
+
+
+
+
+<script>
+        
+    
+    function returnback(){
+
+        window.location = "/user"
+    }
+
+
+    function collectChecks(){
+
+        var books_id_checked = [];
+        
+        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
+        
+        //console.log(checkbox.length+"--------------");
+        for (var i = 0; i < checkbox.length; i++) {
+
+            books_id_checked.push(checkbox[i].id);
+        }
+
+        console.log(books_id_checked);
+        console.log("success");
+        
+        $.ajax({
+            url: "/books",
+            type: "POST",
+            data : {checkout :books_id_checked},
+            success: function(msg){
+               window.location="/user";
+            
+        }
+        }); 
+    
+
+}
+
+</script>

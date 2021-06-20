@@ -1,0 +1,47 @@
+
+<head>
+    <link href="/assets/styles/table.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+<p class="sign" align="center">History</p>
+
+<table id="books" >  
+    <thead>  
+        <tr align="center">
+            <th>Request ID</th>  
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>Status</th>
+        </tr>  
+    </thead>  
+
+     <tbody>
+  
+       {% for bookdata in book %}
+        <tr align="center">
+            <td>{{ bookdata.Request_ID }}</td>
+            <td>{{ bookdata.Book_ID }}</td>  
+            <td>{{ bookdata.book_name }}</td>  
+            <td>{{ bookdata.Status }}</td>  
+            
+        </tr>   
+        {% endfor %}                    
+     
+     </tbody>
+     
+</table>   
+
+
+<button onclick="returnback()" class="submitbutton" >Back</button>
+
+<script>
+    function returnback(){
+
+        window.location = "/user"
+    }
+</script>
+
+

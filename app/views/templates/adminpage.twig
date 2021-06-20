@@ -1,0 +1,109 @@
+<head>
+     <link href="/assets/styles/admin.css" rel="stylesheet">
+     <link href="/assets/styles/table.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .adddata{
+            margin-top:20px;
+        }
+        #successMessage{
+            margin-bottom:-10px;
+        }
+    </style>
+</head>
+
+
+
+<p class="sign" align="center">Welcome Admin</p>
+
+
+<form action="/managebooks" method="GET">
+    <button type="submit" class = "submitbutton" id="manage" align="center">Manage Books</button>
+    
+</form>
+
+<form action="/checkedbooks" method="GET">
+    <button type="submit" class = "submitbutton" id="checkedbooks"align="center">Checked Books</button>
+    
+</form>
+
+
+
+<table id="books" >  
+    <thead>  
+        <tr align="center">
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>Book Count</th>  
+            {# <th>+</th>
+            <th>-</th> #}
+        </tr>  
+    </thead>  
+
+     <tbody>  
+    {% for book in bookdata %}
+        <tr align="center">
+            <td>{{book.book_id }}</td>  
+            <td type = "text" id = "{{book.book_name}}">{{book.book_name }}</td>
+            <td>{{book.book_count }}</td>
+            {# <td><button class = "incdec" onclick="incBookCount('{{book.book_id}}','{{book.book_count}}')" type ="submit" id= "{{book.book_id }}">+</button></td>
+            <td><button class = "incdec"onclick="decBookCount('{{book.book_id}}','{{book.book_count }}')" type ="submit" id= "{{book.book_id }}">-</button></td> #}
+        </tr>                       
+    {% endfor %}  
+     </tbody>
+     
+</table>   
+    
+
+<form action="/addbooks" method="POST">
+
+    <div class="adddata" id="divs">
+        <label for="book_name" >Book Name</label>
+        <br>
+        <input class="inputP"type="text" id="book_name" name = "book_name" required>
+    </div>
+    <div  class="adddata"  id="divs">
+        <label for="book_count">Book Count</label>
+        <br>
+        <input class="inputP"type="number" id="book_count" name = "book_count" required>
+    </div>
+       {% if dataEntered %}
+                   <p style="color:green" id="successMessage" class="login" align="center"> Add book Successful !</p>
+        {% endif %}   
+         {% if invaliddata %}
+                   <p style="color:red" id="successMessage" class="login" align="center"> Data Invalid </p>
+        {% endif %} 
+    <button id="adder" class = "submitbutton"type="submit">Add Book(s)</button>
+    
+</form>
+
+
+<button id = "logout" class="submitbutton" align="center" onclick= "logoutadmin()" type="button">&#160&#160&#160&#160Log out&#160&#160&#160&#160</button>
+    
+
+
+
+<script>
+
+
+    function logoutadmin()
+        {    
+            
+            
+        $.ajax({
+            url: "/logout",
+            type: "GET",
+            
+            success:function(){
+
+                window.location = "/";
+            }   
+        }); 
+
+        }
+
+</script>
+
+

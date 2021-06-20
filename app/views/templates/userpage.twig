@@ -1,0 +1,64 @@
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Library</title>
+        <link href="/assets/styles/user.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <title>My Account</title>
+  
+
+    </head>
+    
+    <body>
+      <div class="main">
+        <p class="sign" align="center">Welcome Back Buddy !</p>
+        
+    
+
+    
+    <form class="form1" action="/books" method="GET">
+        <button id ="login" class="submitbutton" type="submit" align="center">&#160Library&#160&#160</button>
+    </form>
+    
+    <form class="form1" action="/approvedbooks" method="GET">
+        <button id ="login" class="submitbutton" type="submit" align="center">My Books</button>
+    </form>
+    
+    <form class="form1" action="/userhistory" method="GET">
+        <button id ="login" class="submitbutton" type="submit" align="center">&#160History&#160&#160</button>
+    </form>
+    
+    <button id = "logout" class="submitbutton" align="center"onclick= "logoutuser()" type="button">&#160Log out&#160&#160</button>
+    
+    </body>
+
+
+    <script type="text/javascript">
+
+        function logoutuser()
+        {  
+            $.ajax({
+
+            url: "/logout",
+            type: "GET",
+            data :{},
+            success:function(){
+                
+                window.location = "/";
+            }   
+
+        }); 
+
+        }
+    </script>
+
+
+</html>
