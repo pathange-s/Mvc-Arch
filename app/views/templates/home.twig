@@ -1,13 +1,15 @@
 <html>
-    
-    <head>
-      
-      <link href="/assets/styles/home.css" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      
-      <title>Library</title>
-      <style>
+
+  <head>
+
+    <link href="/assets/styles/home.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      Library
+    </title>
+    <style>
         #footer{
           padding:0;
         }
@@ -19,36 +21,50 @@
         }
       </style>
 
-    </head>
-    
-    <body>
-      <div class="main">
-        <p class="sign" align="center">Hue Hue Library Welcomes You</p>
-        
-        
-        
-        <p class="sign2" align="center" id ="footer"> &#160&#160"&#160&#160You dont have to look far to find treasures...&#160&#160&#160&#160&#160&#160&#160 &#160 Discover them everytime you visit "Hue Hue" "&#160&#160</p>
-    
-        <div>
-          
-          <button id ="login" class="submitbutton" type="submit" align="center"><a href="/login">&#160&#160Login&#160&#160</a></button>
-          <button id ="register" class="submitbutton" type="submit" align="center"><a href="/register">Register</a></button>
-          <button id ="admin" class="submitbutton" type="submit" align="center"><a href="/admin_login">&#160&#160Admin&#160&#160</a></button>
-          
-              
-        </div>
+  </head>
 
-        <p class="sign" align="center" id ="footer">Have a great read ahead !</p>
-        <p class="sign" align="center" id ="author"> ~ Sainath Rao</p>
+  <body>
+    <div class="main">
+      <p class="sign" align="center">
+        Hue Hue Library Welcomes You
+      </p>
 
-                {% if logoutmessage %}
-                   <p id="successMessage" class="login" align="center">Registration Successful !</p>
-                {% endif %}   
-         
+      <p class="sign2" align="center" id="footer">
+        &#160&#160"&#160&#160You dont have to look far to find treasures...&#160&#160&#160&#160&#160&#160&#160 &#160 Discover them everytime you visit "Hue Hue" "&#160&#160
+      </p>
+
+      <div>
+
+        <button id="login" class="submitbutton" type="submit" align="center">
+          <a href="/login">
+            &#160&#160Login&#160&#160
+          </a>
+        </button>
+        <button id="register" class="submitbutton" type="submit" align="center">
+          <a href="/register">
+            Register
+          </a>
+        </button>
+        <button id="admin" class="submitbutton" type="submit" align="center">
+          <a href="/admin_login">
+            &#160&#160Admin&#160&#160
+          </a>
+        </button>
+
+      </div>
+
+      <p class="sign" align="center" id="footer">
+        Have a great read ahead !
+      </p>
+      <p class="sign" align="center" id="author">
+        ~ Sainath Rao
+      </p>
+
+      {% if logoutmessage %}
+        <p id="successMessage" class="login" align="center">
+          Registration Successful !
+        </p>
+      {% endif %}
     </body>
-    
-
-
+  </body>
 </html>
-
-

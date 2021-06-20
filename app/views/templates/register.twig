@@ -1,15 +1,16 @@
+<html>
 
- <html>
-    
     <head>
-      
-      <link href="/assets/styles/home.css" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      
-      <title>Register</title>
 
-    <style>
+        <link href="/assets/styles/home.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>
+            Register
+        </title>
+
+        <style>
         #loginA{
             margin-top: 60px;
         }
@@ -33,43 +34,46 @@
     </style>
 
     </head>
-    
+
     <body>
 
-    <div id="container">
-      <div class="main">
-      
-            <p id="registerHead" class="sign" align="center">Register</p>  
+        <div id="container">
+            <div class="main">
 
-            <div class ="message">
-                {% if dataEntered %}
-                   <p id="successMessage" class="login" align="center">Registration Successful !</p>
-                {% endif %}   
+                <p id="registerHead" class="sign" align="center">
+                    Register
+                </p>
+
+                <div class="message">
+                    {% if dataEntered %}
+                        <p id="successMessage" class="login" align="center">
+                            Registration Successful !
+                        </p>
+                    {% endif %}
+                </div>
+
+                <form class="form1" action="/register" method="POST">
+
+                    <div>
+
+                        <input class="un" id="name" name="name" type="text" align="center" for="name" placeholder="Username" required>
+                        <input class="un" id="email" name="email" type="email" align="center" for="email" placeholder="Email ID" required>
+                        <input class="un" id="password" name="password" type="password" align="center" for="password" placeholder="Password" required>
+
+                        <button id="Register" class="submitbutton" align="center">
+                            Register
+                        </button>
+
+                        <p class="login" align="center" id="loginA">
+                            <a href="/login">
+                                Login
+                            </p>
+                        </p>
+                    </div>
+
+                </form>
+
             </div>
-        
-    <form class="form1" action="/register" method="POST">
-      
-        <div>
-     
-          <input class="un"id="name" name = "name"  type="text" align="center" for ="name" placeholder="Username" required>
-          <input class="un"id="email" name = "email"  type="email" align="center" for="email" placeholder="Email ID" required>
-          <input class="un"id="password" name = "password"  type="password" align="center" for="password" placeholder="Password" required>
-
-          
-          
-          <button id ="Register" class="submitbutton" align="center" >Register</button>
-          
-          <p class="login" align="center" id = "loginA"><a href="/login">Login</p>
-              
-        </div>
-
-    
-    </form>
-
-    </div>
-         
+        </body>
     </body>
-    
-
-
 </html>

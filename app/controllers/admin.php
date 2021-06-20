@@ -15,9 +15,7 @@ class Admin
                 "bookdata" => \Model\Books::findAvailable(),
             ));
         }
-
     }
-
 }
 
 class AdminLogin
@@ -44,13 +42,10 @@ class AdminLogin
             $_SESSION["User_Email"] = $Email;
             $_SESSION["Role"] = "Admin";
             header("Location:/admin");
-
         } else {
             echo \View\Loader::make()->render("templates/admin_login.twig", array(
                 "wrongpw" => true,
             ));
         }
-
     }
-
 }

@@ -2,49 +2,63 @@
     font-family: 'Ubuntu', sans-serif;
     border-collapse: collapse;
     width: 100%;
-    
-    }
-    #books tr:nth-child(even){background-color: #f2f2f2;}
-    #books tr:hover {background-color: #ddd;}
-    #books th {
+}
+
+#books tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#books tr:hover {
+    background-color: #ddd;
+}
+
+#books th {
     padding-top: 15px;
     padding-bottom: 15px;
-    
     background-color: chocolate;
     color: white;
-    }
-    #books td {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        
-        background-color: rgba(233, 214, 200, 0.671);
-        color: rgb(0, 0, 0);
-    }
-    .sign {
-        padding-top: 10px;
-        color: #8C55AA;
-        font-family: 'Ubuntu', sans-serif;
-        font-weight: bold;
-        font-size: 26px;
-    }
-    .submitbutton {
-      cursor: pointer;
-        border-radius: 5em;
-        color: #fff;
-        background: linear-gradient(to right, #9C27B0, #E040FB);
-        border: 0;
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        margin: 30px;
-        margin-left:45% ;
-        font-family: 'Ubuntu', sans-serif;
-        font-size: 13px;
-        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-    }
-    #checkout{
-        margin-left: 300px;
-    }
-    .submitbutton { transition: all .2s ease-in-out; }
-    .submitbutton:hover { transform: scale(1.1); }
+}
+
+#books td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgba(233, 214, 200, 0.671);
+    color: rgb(0, 0, 0);
+}
+
+.sign {
+    padding-top: 10px;
+    color: #8C55AA;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.submitbutton {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 30px;
+    margin-left: 45%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+#checkout {
+    margin-left: 300px;
+}
+
+.submitbutton {
+    transition: all .2s ease-in-out;
+}
+
+.submitbutton:hover {
+    transform: scale(1.1);
+}

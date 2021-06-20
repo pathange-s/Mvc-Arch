@@ -1,10 +1,10 @@
 <head>
-     <link href="/assets/styles/admin.css" rel="stylesheet">
-     <link href="/assets/styles/table.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="/assets/styles/admin.css" rel="stylesheet">
+        <link href="/assets/styles/table.css" rel="stylesheet">
+            <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <style>
+            <style>
         #back{
             margin:30px;
         }
@@ -17,50 +17,78 @@
             margin-left:25%;
         }
     </style>
-</head>
+        </head>
 
+        <table id="books">
+            <thead>
+                <tr align="center">
+                    <th>
+                        Request ID
+                    </th>
+                    <th>
+                        Book ID
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                    <th>
+                        Book Count
+                    </th>
+                    <th>
+                        User_Email
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        ~
+                    </th>
+                </tr>
+            </thead>
 
-<table id="books" >  
-    <thead>  
-        <tr align="center">
-            <th>Request ID</th>    
-            <th>Book ID</th> 
-            <th>Book Name</th> 
-            <th>Book Count</th> 
-            <th>User_Email</th>  
-            <th>Status</th>  
-            <th>~</th>
-        </tr>  
-    </thead>  
+            <tbody>
+                {% for book in requestdata %}
+                    <tr align="center">
+                        <td>
+                            {{ book.Request_ID }}
+                        </td>
+                        <td>
+                            {{ book.Book_ID }}
+                        </td>
+                        <td>
+                            {{ book.book_name }}
+                        </td>
+                        <td>
+                            {{ book.book_count }}
+                        </td>
+                        <td>
+                            {{ book.User_Email }}
+                        </td>
+                        <td>
+                            {{ book.Status }}
+                        </td>
+                        <td>
+                            <input type="checkbox" id="{{ book.Request_ID }}" name="tickOrNot"></td>
 
-     <tbody>  
-       {% for book in requestdata %}
-        <tr align="center">
-            <td>{{book.Request_ID }}</td>   
-            <td>{{book.Book_ID }}</td>  
-            <td>{{book.book_name }}</td>  
-            <td>{{book.book_count  }}</td>  
-            <td>{{book.User_Email }}</td>  
-            <td>{{book.Status }}</td>
-            <td><input type="checkbox" id="{{book.Request_ID}}" name="tickOrNot"></td>
-            
-            
-        </tr>                       
-     
-        {% endfor %}                    
-     
-     </tbody>
-     
-</table>   
+                        </tr>
 
+                    {% endfor %}
 
+                </tbody>
 
-<button class="submitbutton" id="back"  onclick="returnback()">Back</button>
-<button  class="submitbutton" id="deny" onclick="Deny()">Deny</button>
-<button class="submitbutton" id = "approve" onclick="Approve()">Approve</button>  
+            </table>
 
+            <button class="submitbutton" id="back" onclick="returnback()">
+                Back
+            </button>
+            <button class="submitbutton" id="deny" onclick="Deny()">
+                Deny
+            </button>
+            <button class="submitbutton" id="approve" onclick="Approve()">
+                Approve
+            </button>
 
-<script>
+            <script>
 
     function returnback(){
 
@@ -125,3 +153,4 @@
         }
 
 </script>
+            

@@ -1,49 +1,65 @@
 <head>
-    
+
     <link href="/assets/styles/admin.css" rel="stylesheet">
-    <link href="/assets/styles/table.css" rel="stylesheet">    
-    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="/assets/styles/table.css" rel="stylesheet">
+            <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
+        </head>
 
+        <table id="books">
+            <thead>
+                <tr align="center">
+                    <th>
+                        Request ID
+                    </th>
+                    <th>
+                        Book ID
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                    <th>
+                        Book Count
+                    </th>
+                    <th>
+                        User_Email
+                    </th>
 
+                </tr>
+            </thead>
 
-<table id="books" >  
-    <thead>  
-        <tr align="center">
-            <th>Request ID</th>    
-            <th>Book ID</th> 
-            <th>Book Name</th> 
-            <th>Book Count</th> 
-            <th>User_Email</th>  
-            
-        </tr>  
-    </thead>  
+            <tbody>
+                {% for book in books %}
+                    <tr align="center">
+                        <td>
+                            {{ book.Request_ID }}
+                        </td>
+                        <td>
+                            {{ book.Book_ID }}
+                        </td>
+                        <td>
+                            {{ book.book_name }}
+                        </td>
+                        <td>
+                            {{ book.book_count }}
+                        </td>
+                        <td>
+                            {{ book.User_Email }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
 
-     <tbody>  
-     {% for book in books %}
-        <tr align="center"> 
-            <td>{{book.Request_ID }}</td>   
-            <td>{{book.Book_ID }}</td>  
-            <td>{{book.book_name }}</td>  
-            <td>{{book.book_count }}</td>  
-            <td>{{book.User_Email }}</td>  
-        </tr>                       
-     {% endfor %}  
-     </tbody>
-     
-</table>   
+        </table>
 
+        <br>
 
+            <button class="submitbutton" onclick="returnback()">
+                Back
+            </button>
 
-<br>
-
-<button class="submitbutton"  onclick="returnback()">Back</button>
-  
-
-
-<script>
+            <script>
 
     function returnback(){
         window.location = "/admin"
@@ -51,3 +67,4 @@
 
 
 </script>
+            

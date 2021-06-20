@@ -1,11 +1,11 @@
 <head>
 
-     <link href="/assets/styles/table.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <link href="/assets/styles/table.css" rel="stylesheet">
+        <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style>
         #back{
             margin-left:20%;
         }
@@ -16,43 +16,56 @@
         }
     </style>
 
-</head>
+    </head>
 
+    <p class="sign" align="center">
+        Books Available In Library
+    </p>
+    <table id="books">
+        <thead>
+            <tr align="center">
 
-<p class="sign" align="center">Books Available In Library</p>
-<table id="books" >  
-    <thead>  
-        <tr align="center">
-            
-            <th>Book ID</th>  
-            <th>Book Name</th>  
-            <th>CheckIn</th>
-        </tr>  
-    </thead>  
+                <th>
+                    Book ID
+                </th>
+                <th>
+                    Book Name
+                </th>
+                <th>
+                    CheckIn
+                </th>
+            </tr>
+        </thead>
 
-     <tbody>
-  
-       {% for bookdata in booksavailable %}
-        <tr align="center">
-            
-            <td>{{ bookdata.book_id }}</td>  
-            <td>{{ bookdata.book_name }}</td>  
-            <td><input type="checkbox" id="{{bookdata.book_id}}" name="tickOrNot"></td>            
-        </tr>   
-        {% endfor %}                    
-     
-     </tbody>
-     
-</table>   
+        <tbody>
 
-<br>
-<button onclick="returnback()" id="back" class="submitbutton">Back</button>
-<button onclick="collectChecks()" id="checkout" class="submitbutton">Checkout</button>
+            {% for bookdata in booksavailable %}
+                <tr align="center">
 
+                    <td>
+                        {{ bookdata.book_id }}
+                    </td>
+                    <td>
+                        {{ bookdata.book_name }}
+                    </td>
+                    <td>
+                        <input type="checkbox" id="{{ bookdata.book_id }}" name="tickOrNot"></td>
+                    </tr>
+                {% endfor %}
 
+            </tbody>
 
+        </table>
 
-<script>
+        <br>
+            <button onclick="returnback()" id="back" class="submitbutton">
+                Back
+            </button>
+            <button onclick="collectChecks()" id="checkout" class="submitbutton">
+                Checkout
+            </button>
+
+            <script>
         
     
     function returnback(){
@@ -89,3 +102,4 @@
 }
 
 </script>
+            

@@ -23,7 +23,5 @@ class Register
         echo \View\Loader::make()->render("templates/register.twig", array(
             "dataEntered" => true,
         ));
-
     }
-
 }

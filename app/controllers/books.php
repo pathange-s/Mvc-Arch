@@ -1,152 +1,143 @@
 <?php
+
 namespace Controller;
 
 session_start();
 
 
-class Books{
-    public function get(){  
-        if(!isset($_SESSION)){
+class Books
+{
+    public function get()
+    {
+        if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
+        } else {
+            $Email = $_SESSION['User_Email'];
+
+            echo \View\Loader::make()->render("templates/books.twig", array(
+                "booksavailable" => \Model\Books::findAvailable(),
+
+            ));
         }
-        else{
-        $Email = $_SESSION['User_Email'];
-        
-        echo \View\Loader::make()->render("templates/books.twig",array(
-            "booksavailable" => \Model\Books::findAvailable(),
-            
-        ));
-        
-        }
-     
     }
 
-    
-    public function post(){  
-      
+
+    public function post()
+    {
+
         $db = \DB::get_instance();
         $data = $_POST["checkout"];
-       
+
         $Email = $_SESSION["User_Email"];
 
-        \Model\Books::updateRequest($Email,$data);
-       
-        
+        \Model\Books::updateRequest($Email, $data);
     }
-
 }
 
 
 
-class AddBooks{
+class AddBooks
+{
 
-    public function post(){
-        
-        if(!isset($_SESSION["Role"])){
+    public function post()
+    {
+
+        if (!isset($_SESSION["Role"])) {
             echo \View\Loader::make()->render("templates/home.twig");
-        }
-        else{
+        } else {
 
-            $book_name=$_POST["book_name"];
-            $book_count=$_POST["book_count"];
+            $book_name = $_POST["book_name"];
+            $book_count = $_POST["book_count"];
 
-            if($book_count<0){
+            if ($book_count < 0) {
 
                 echo \View\Loader::make()->render("templates/adminpage.twig", array(
                     "invaliddata" => true,
                     "bookdata" =>  \Model\Books::findAvailable(),
 
                 ));
-            }
-            else{
-                \Model\Books::addBookData($book_name,$book_count);
+            } else {
+                \Model\Books::addBookData($book_name, $book_count);
 
                 echo \View\Loader::make()->render("templates/adminpage.twig", array(
                     "dataEntered" => true,
                     "bookdata" =>  \Model\Books::findAvailable(),
 
                 ));
-           }
-        
-       
+            }
         }
-
     }
-
 }
 
 
-class ApprovedBooks{
+class ApprovedBooks
+{
 
 
-    public function get(){  
-        if(!isset($_SESSION)){
+    public function get()
+    {
+        if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
         }
         //echo $_SESSION['User_Email'];
-        else{
-            echo \View\Loader::make()->render("templates/approvedbooks.twig",array(
-            "history" => \Model\Books::findApproved($_SESSION['User_Email']),
-            "checkinsuccess"=>false,
-        ));
+        else {
+            echo \View\Loader::make()->render("templates/approvedbooks.twig", array(
+                "history" => \Model\Books::findApproved($_SESSION['User_Email']),
+                "checkinsuccess" => false,
+            ));
+        }
     }
 
-     
-    }
 
-    
-    public function post(){  
-      
+    public function post()
+    {
+
         $db = \DB::get_instance();
         $data = $_POST["checkin"];
         $Email = $_SESSION["User_Email"];
-        \Model\Books::updateCheckin($Email,$data);
-       
-        
+        \Model\Books::updateCheckin($Email, $data);
     }
 }
 
 
-class ManageBooks{
+class ManageBooks
+{
 
-    public function get(){
-        if(!isset($_SESSION)){
+    public function get()
+    {
+        if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
-        }
-        else{
+        } else {
 
-            echo \View\Loader::make()->render("templates/managebooks.twig",array(
+            echo \View\Loader::make()->render("templates/managebooks.twig", array(
                 "requestdata" =>  \Model\Books::findAllRequests(),
             ));
         }
-
-
     }
 
-    public function post(){  
-      
+    public function post()
+    {
+
         $db = \DB::get_instance();
-        
+
         $data = $_POST["request"];
         $status = $_POST["status"];
-        
-        \Model\Books::updateRequestAdmin($data,$status);
 
-        
+        \Model\Books::updateRequestAdmin($data, $status);
     }
-
 }
 
-class CheckedBooks{
-    public function get(){  
-        
-        if(!isset($_SESSION["Role"])){
+class CheckedBooks
+{
+    public function get()
+    {
+
+        if (!isset($_SESSION["Role"])) {
             echo \View\Loader::make()->render("templates/home.twig");
+        } else {
+            echo \View\Loader::make()->render("templates/checkedbooks.twig", array(
+                "books" => \Model\Books::findChecked(),
+            ));
         }
-        else{
-        echo \View\Loader::make()->render("templates/checkedbooks.twig",array(
-            "books" => \Model\Books::findChecked(),
-        ));
-    }
     }
 }

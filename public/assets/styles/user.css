@@ -21,14 +21,12 @@ body {
     font-size: 26px;
 }
 
-
 form.form1 {
     padding-top: 40px;
 }
 
-
 .submitbutton {
-  cursor: pointer;
+    cursor: pointer;
     border-radius: 5em;
     color: #fff;
     background: linear-gradient(to right, #9C27B0, #E040FB);
@@ -44,18 +42,21 @@ form.form1 {
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
-.submitbutton { transition: all .2s ease-in-out; }
-.submitbutton:hover { transform: scale(1.1); }
+.submitbutton {
+    transition: all .2s ease-in-out;
+}
 
-#logout{
+.submitbutton:hover {
+    transform: scale(1.1);
+}
+
+#logout {
     margin-top: 30px;
     background: linear-gradient(to right, #d0154d, #e48c9f);
-
 }
 
 @media (max-width: 600px) {
     .main {
         border-radius: 0px;
     }
-    
 }

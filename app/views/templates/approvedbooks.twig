@@ -1,10 +1,12 @@
 <head>
     <link href="/assets/styles/table.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title> History </title>
-    
-    <style>
+        <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>
+            History 
+        </title>
+
+        <style>
         #back{
             margin-left:20%;
         }
@@ -15,48 +17,67 @@
         }
     </style>
 
+    </head>
 
-</head>
+    <p class="sign" align="center">
+        History
+    </p>
 
+    <table id="books">
+        <thead>
+            <tr align="center">
+                <th>
+                    Request ID
+                </th>
+                <th>
+                    Book ID
+                </th>
+                <th>
+                    Book Name
+                </th>
+                <th>
+                    CheckIn
+                </th>
+            </tr>
+        </thead>
 
-<p class="sign" align="center">History</p>
+        <tbody>
 
-<table id="books" >  
-    <thead>  
-        <tr align="center">
-            <th>Request ID</th>  
-            <th>Book ID</th>  
-            <th>Book Name</th>  
-            <th>CheckIn</th>
-        </tr>  
-    </thead>  
+            {% for bookdata in history %}
+                <tr align="center">
+                    <td>
+                        {{ bookdata.Request_ID }}
+                    </td>
+                    <td>
+                        {{ bookdata.Book_ID }}
+                    </td>
+                    <td>
+                        {{ bookdata.book_name }}
+                    </td>
+                    <td>
+                        <input type="checkbox" id="{{ bookdata.Request_ID }}" name="tickOrNot"></td>
+                    </tr>
+                {% endfor %}
 
-     <tbody>
-  
-       {% for bookdata in history %}
-        <tr align="center">
-            <td>{{ bookdata.Request_ID }}</td>
-            <td>{{ bookdata.Book_ID }}</td>  
-            <td>{{ bookdata.book_name }}</td>  
-            <td><input type="checkbox" id="{{bookdata.Request_ID}}" name="tickOrNot"></td>            
-        </tr>   
-        {% endfor %}                    
-     
-     </tbody>
-     
-</table>   
+            </tbody>
 
- {% if checkinsuccess %}
-    <p id="successMessage" class="login" align="center">Registration Successful !</p>
-{% endif %}  
+        </table>
 
-<button onclick="returnback()" id ="back" class="submitbutton" >Back</button>
+        {% if checkinsuccess %}
+            <p id="successMessage" class="login" align="center">
+                Registration Successful !
+            </p>
+        {% endif %}
 
-   
-<button onclick="checkin()" id="checkout" class="submitbutton" >CheckIn</button>
-        
+        <button onclick="returnback()" id="back" class="submitbutton">
+            Back
+        </button>
 
-<script>
+        <button onclick="checkin()" id="checkout" class="submitbutton">
+            CheckIn
+        </button>
+
+        <script>
     function returnback(){
 
         window.location = "/user"
@@ -93,5 +114,4 @@
 
 
 </script>
-
-
+        
