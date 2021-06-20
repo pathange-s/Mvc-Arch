@@ -9,30 +9,14 @@ Library Management System on MVC architecture
 ## Setting up database
 * Start mysql server
 
-```bash
-CREATE DATABASE USERS;
-```
-```bash
-USE USERS;
-```
-```bash
-CREATE TABLE USERS_DATA (Name VARCHAR(255),Email VARCHAR(255),Password VARCHAR(255));
-```
-```bash
-CREATE TABLE Books (book_id INT AUTO_INCREMENT PRIMARY KEY,book_name VARCHAR(255),book_count VARCHAR(255));
-```
-
-
-```bash
-CREATE TABLE Books_Status (Request_ID INT AUTO_INCREMENT PRIMARY KEY,User_Email VARCHAR(255),Book_ID INT, Status VARCHAR(255));
-```
+* Setup DB from the file `DatabaseSetup.txt`
 
 * Edit `sampleconfig.php` file with appropirate details in the `config` directory and rename it to `config.php`
 
 * Database setup is done !
 
 
-* In the project root directory setup composer by the commands 
+* In the project root directory setup composer by the command 
 ```bash
 composer install
 composer dump-autoload
@@ -56,9 +40,6 @@ sudo nano /etc/hosts
 ```
 
 * Add `127.0.0.1  lib.local` (or your domain name) in the hosts
-
-
-
 
 ## Run 
 
