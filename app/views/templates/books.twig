@@ -67,14 +67,13 @@
         
         var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
         
-        //console.log(checkbox.length+"--------------");
+    
         for (var i = 0; i < checkbox.length; i++) {
 
             books_id_checked.push(checkbox[i].id);
         }
 
-        console.log(books_id_checked);
-        console.log("success");
+      
         
         $.ajax({
             url: "/books",

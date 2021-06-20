@@ -4,15 +4,15 @@ namespace Controller;
 
 session_start();
 
-
-class Admin{
-    public function get(){
-        if(!isset($_SESSION)){
+class Admin
+{
+    public function get()
+    {
+        if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
-        }
-        else{
-            echo \View\Loader::make()->render("templates/adminpage.twig",array(
-                "bookdata" =>  \Model\Books::findAvailable(),
+        } else {
+            echo \View\Loader::make()->render("templates/adminpage.twig", array(
+                "bookdata" => \Model\Books::findAvailable(),
             ));
         }
 
@@ -20,37 +20,37 @@ class Admin{
 
 }
 
+class AdminLogin
+{
 
-class AdminLogin{
+    public function get()
+    {
 
-    public function get(){
-       
         echo \View\Loader::make()->render("templates/admin_login.twig");
     }
 
-    public function post(){
+    public function post()
+    {
         $Email = $_POST["email"];
         $Password = $_POST["password"];
-        $result = \Model\Auth::verifyLoginAdmin($Email,$Password);
-    
-        if($result['Password']==NULL){
-            echo \View\Loader::make()->render("templates/admin_login.twig",array(
-            "EmailDNE"=>true,
-         ));
-        }
-        else if($Password==$result['Password']){
+        $result = \Model\Auth::verifyLoginAdmin($Email, $Password);
+
+        if ($result['Password'] == null) {
+            echo \View\Loader::make()->render("templates/admin_login.twig", array(
+                "EmailDNE" => true,
+            ));
+        } else if ($Password == $result['Password']) {
             //echo "Correct Pw";
-            $_SESSION["User_Email"]=$Email;
-            $_SESSION["Role"]="Admin";
+            $_SESSION["User_Email"] = $Email;
+            $_SESSION["Role"] = "Admin";
             header("Location:/admin");
-        
-        }
-        else{
-            echo \View\Loader::make()->render("templates/admin_login.twig",array(
-                "wrongpw"=>true,
+
+        } else {
+            echo \View\Loader::make()->render("templates/admin_login.twig", array(
+                "wrongpw" => true,
             ));
         }
-        
-     }
-}
 
+    }
+
+}

@@ -37,6 +37,7 @@ class Books{
 }
 
 
+
 class AddBooks{
 
     public function post(){
@@ -102,5 +103,50 @@ class ApprovedBooks{
         \Model\Books::updateCheckin($Email,$data);
        
         
+    }
+}
+
+
+class ManageBooks{
+
+    public function get(){
+        if(!isset($_SESSION)){
+            echo \View\Loader::make()->render("templates/home.twig");
+        }
+        else{
+
+            echo \View\Loader::make()->render("templates/managebooks.twig",array(
+                "requestdata" =>  \Model\Books::findAllRequests(),
+            ));
+        }
+
+
+    }
+
+    public function post(){  
+      
+        $db = \DB::get_instance();
+        
+        $data = $_POST["request"];
+        $status = $_POST["status"];
+        
+        \Model\Books::updateRequestAdmin($data,$status);
+
+        
+    }
+
+}
+
+class CheckedBooks{
+    public function get(){  
+        
+        if(!isset($_SESSION["Role"])){
+            echo \View\Loader::make()->render("templates/home.twig");
+        }
+        else{
+        echo \View\Loader::make()->render("templates/checkedbooks.twig",array(
+            "books" => \Model\Books::findChecked(),
+        ));
+    }
     }
 }

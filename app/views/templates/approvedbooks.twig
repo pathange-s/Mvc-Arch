@@ -68,13 +68,12 @@
         
         var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
         
-        //console.log(checkbox.length+"--------------");
+        
         for (var i = 0; i < checkbox.length; i++) {
 
             request_id_checked_checkin.push(checkbox[i].id);
         }
 
-        console.log(request_id_checked_checkin);
 
 
             
@@ -84,7 +83,7 @@
         type:"POST",  
         data:{checkin : request_id_checked_checkin},
         success: function(msg){
-            console.log("success");
+       
             window.location="/approvedbooks";
             }
     });
