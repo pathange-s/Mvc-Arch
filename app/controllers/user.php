@@ -9,7 +9,7 @@ class Home
     public function get()
     {
 
-        if ($_SESSION['User_Email'] != NULL) {
+        if ($_SESSION["UserEmail"] != NULL) {
 
             if ($_SESSION['Role'] != NULL) {
                 header("Location:/admin");
@@ -43,12 +43,12 @@ class UserHistory
 
     public function get()
     {
-        //echo $_SESSION['User_Email'];
+        //echo $_SESSION["UserEmail"];
         if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
         } else {
             echo \View\Loader::make()->render("templates/userhistory.twig", array(
-                "book" => \Model\Books::findHistory($_SESSION['User_Email']),
+                "book" => \Model\Books::findHistory($_SESSION["UserEmail"]),
             ));
         }
     }

@@ -31,15 +31,15 @@ class AdminLogin
     {
         $Email = $_POST["email"];
         $Password = $_POST["password"];
-        $result = \Model\Auth::verifyLoginAdmin($Email, $Password);
+        $Result = \Model\Auth::verifyLoginAdmin($Email, $Password);
 
-        if ($result['Password'] == null) {
+        if ($Result['Password'] == null) {
             echo \View\Loader::make()->render("templates/admin_login.twig", array(
                 "EmailDNE" => true,
             ));
-        } else if ($Password == $result['Password']) {
+        } else if ($Password == $Result['Password']) {
             //echo "Correct Pw";
-            $_SESSION["User_Email"] = $Email;
+            $_SESSION["UserEmail"] = $Email;
             $_SESSION["Role"] = "Admin";
             header("Location:/admin");
         } else {

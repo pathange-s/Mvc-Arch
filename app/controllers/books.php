@@ -12,7 +12,7 @@ class Books
         if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
         } else {
-            $Email = $_SESSION['User_Email'];
+            $Email = $_SESSION["UserEmail"];
 
             echo \View\Loader::make()->render("templates/books.twig", array(
                 "booksavailable" => \Model\Books::findAvailable(),
@@ -26,11 +26,11 @@ class Books
     {
 
         $db = \DB::get_instance();
-        $data = $_POST["checkout"];
+        $Data = $_POST["checkout"];
 
-        $Email = $_SESSION["User_Email"];
+        $Email = $_SESSION["UserEmail"];
 
-        \Model\Books::updateRequest($Email, $data);
+        \Model\Books::updateRequest($Email, $Data);
     }
 }
 
@@ -79,10 +79,10 @@ class ApprovedBooks
         if (!isset($_SESSION)) {
             echo \View\Loader::make()->render("templates/home.twig");
         }
-        //echo $_SESSION['User_Email'];
+        //echo $_SESSION["UserEmail"];
         else {
             echo \View\Loader::make()->render("templates/approvedbooks.twig", array(
-                "history" => \Model\Books::findApproved($_SESSION['User_Email']),
+                "history" => \Model\Books::findApproved($_SESSION["UserEmail"]),
                 "checkinsuccess" => false,
             ));
         }
@@ -93,9 +93,9 @@ class ApprovedBooks
     {
 
         $db = \DB::get_instance();
-        $data = $_POST["checkin"];
-        $Email = $_SESSION["User_Email"];
-        \Model\Books::updateCheckin($Email, $data);
+        $Data = $_POST["checkin"];
+        $Email = $_SESSION["UserEmail"];
+        \Model\Books::updateCheckin($Email, $Data);
     }
 }
 
@@ -120,10 +120,10 @@ class ManageBooks
 
         $db = \DB::get_instance();
 
-        $data = $_POST["request"];
-        $status = $_POST["status"];
+        $Data = $_POST["request"];
+        $Status = $_POST["status"];
 
-        \Model\Books::updateRequestAdmin($data, $status);
+        \Model\Books::updateRequestAdmin($Data, $Status);
     }
 }
 

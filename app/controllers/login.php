@@ -17,15 +17,15 @@ class Login
     {
         $Email = $_POST["email"];
         $Password = $_POST["password"];
-        $result = \Model\Auth::verifyLogin($Email, $Password);
+        $Result = \Model\Auth::verifyLogin($Email, $Password);
 
-        if ($result['Password'] == null) {
+        if ($Result['Password'] == null) {
             echo \View\Loader::make()->render("templates/login.twig", array(
                 "EmailDNE" => true,
             ));
-        } else if (password_verify($Password, $result['Password'])) {
+        } else if (password_verify($Password, $Result['Password'])) {
 
-            $_SESSION["User_Email"] = $Email;
+            $_SESSION["UserEmail"] = $Email;
 
             header("Location:/user");
         } else {
@@ -41,7 +41,6 @@ class Logout
 
     public function get()
     {
-
         session_destroy();
         header("Location:/");
     }

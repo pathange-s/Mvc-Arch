@@ -18,23 +18,23 @@ class Auth
     {
         $db = \DB::get_instance();
 
-        $sth = $db->prepare("SELECT * FROM USERS_DATA WHERE Email= ?");
-        $sth->execute([$Email]);
+        $Sth = $db->prepare("SELECT * FROM USERS_DATA WHERE Email= ?");
+        $Sth->execute([$Email]);
 
-        $result = $sth->fetch();
+        $Result = $Sth->fetch();
         // echo "job done";
-        return $result;
+        return $Result;
     }
 
     public static function verifyLoginAdmin($Email, $Password)
     {
         $db = \DB::get_instance();
 
-        $sth = $db->prepare("SELECT * FROM ADMIN_DATA WHERE Email= ?");
-        $sth->execute([$Email]);
+        $Sth = $db->prepare("SELECT * FROM ADMIN_DATA WHERE Email= ?");
+        $Sth->execute([$Email]);
 
-        $result = $sth->fetch();
+        $Result = $Sth->fetch();
         // echo "job done";
-        return $result;
+        return $Result;
     }
 }
